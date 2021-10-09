@@ -1,0 +1,8 @@
+{
+  "default": "cyan",
+  "warn": "yellow",
+  "debug": "blue",
+  "error": "red",
+  "critical": "magenta",
+  "success": "green"
+}

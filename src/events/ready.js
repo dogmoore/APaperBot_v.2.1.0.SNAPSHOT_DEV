@@ -2,9 +2,9 @@ const config = require('../secrets/config.json');
 module.exports = async client => {
     let userTag = client.user.tag;
 
-    console.log('\n****************');
+    logger.info('****************\n');
     if(config.development.dev_mode) {
-        console.log('\n*DEVELOPMENT MODE ENABLED*\n');
+        logger.info('*DEVELOPMENT MODE ENABLED*\n');
         await client.user.setActivity('IN DEVELOPMENT', {type: 'PLAYING', status: 'active'});
     }
     else {
@@ -15,20 +15,20 @@ module.exports = async client => {
         }
     }
     if(config.development.dev_mode) {
-        console.log(`Username: ${config.development.bot.name}`);
-        console.log(`ID: ${config.development.bot.id}`);
-        console.log(`Tag: ${userTag}`);
-        console.log(`prefix: ${config.development.prefix}`);
-        console.log(`Version: ${config.development.version}`);
-        console.log(`(Pterodactyl Bot Online)`);
-        console.log('****************');
+        logger.info(`Username: ${config.development.bot.name}`);
+        logger.info(`ID: ${config.development.bot.id}`);
+        logger.info(`Tag: ${userTag}`);
+        logger.info(`prefix: ${config.development.prefix}`);
+        logger.info(`Version: ${config.development.version}`);
+        logger.info(`(Pterodactyl Bot Online)`);
+        logger.info('****************');
     } else {
-        console.log(`Username: ${config.main.bot.name}`);
-        console.log(`ID: ${config.main.bot.id}`);
-        console.log(`Tag: ${userTag}`);
-        console.log(`prefix: ${config.main.prefix}`);
-        console.log(`Version: ${config.main.version}`);
-        console.log(`(Pterodactyl Bot Online)`);
-        console.log('****************');
+        logger.info(`Username: ${config.main.bot.name}`);
+        logger.info(`ID: ${config.main.bot.id}`);
+        logger.info(`Tag: ${userTag}`);
+        logger.info(`prefix: ${config.main.prefix}`);
+        logger.info(`Version: ${config.main.version}`);
+        logger.info(`(Pterodactyl Bot Online)`);
+        logger.info('****************');
     }
 }
