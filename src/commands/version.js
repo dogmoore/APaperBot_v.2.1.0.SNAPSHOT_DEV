@@ -5,6 +5,10 @@ module.exports = {
         const Discord = require('discord.js');
         const config = require('../secrets/config.json')
 
-        message.channel.send(config.development.version)
+        If(config.development.dev_mode)
+                message.channel.send(config.development.version)
+        } else {
+        	message.channel.send(config.main.version)
+        }
     }
 }
