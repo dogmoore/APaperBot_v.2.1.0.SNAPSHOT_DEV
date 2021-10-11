@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const moment = require('moment');
 const fs = require('fs')
 const colors = require('colors')
-const config = require('../secrets/config.json') //everything should be either config.logging or config.embed
+const config = require('../../secrets/config.json') //everything should be either config.logging or config.embed
 const color = require('./color.json') //NEED TO FINISH MAKING
 
 let client = Discord.Client;
@@ -137,15 +137,27 @@ class logger {
             console.log(`[CONSOLE|${time}] ${log}`.default)
         }
     }
-    command(log) {
+    command(CommandName, AuthorID, guildName, ping) {
+        let log = `${CommandName} issued by ${AuthorID} in guild ${guildName}`
         if(config.logging.command) {
+            if(ping === undefined) {
             if (this.STF) {
                 SaveToFIle('command', log)
             }
             if(this.STC) {
                 SaveToChannel(log)
             }
-            console.log(`[COMMAND|${time}] ${log}`.default)
+                console.log(`[COMMAND|${time}] ${log}`.default)
+            } else {
+                let log = `${CommandName} issued by ${AuthorID} in guild ${guildName} ping was ${ping}ms`
+                if (this.STF) {
+                    SaveToFIle('command', log)
+                }
+                if(this.STC) {
+                    SaveToChannel(log)
+                }
+                console.log(`[COMMAND|${time}] ${log}`.default)
+            }
         }
     }
     startUp(log) {

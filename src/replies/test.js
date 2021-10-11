@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../secrets/config.json");
-const perm = require("../secrets/permissions.json")
+const perm = require("../custom modules/permissions/permissions.json")
 const permError = new Discord.MessageEmbed()
     .setColor(config.embed.colors.error.permission)
     .setTitle('Permissions Error')

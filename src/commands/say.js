@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const config = require("../secrets/config.json")
-const perm = require("../secrets/permissions.json")
+const perm = require("../custom modules/permissions/permissions.json")
 module.exports = {
     name: 'say',
     description: 'make the bot talk',

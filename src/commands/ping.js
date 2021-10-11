@@ -46,8 +46,8 @@ module.exports = {
                 .addField(message.author.tag, `Command \`Ping\` used in server ${message.guild.name} and returned \`${ping}ms\``)
                 .setTimestamp()
                 .setFooter(config.embed.footer);
-            channelLog.send(log)
+            //channelLog.send(log)
         }
-        logger.debug(`Command ping issued in guild ${message.guild.name} by ${message.author.tag} and returned ${ping}ms`)
+        logger.command('ping', message.author.tag, message.guild.name, ping)
     }
 }

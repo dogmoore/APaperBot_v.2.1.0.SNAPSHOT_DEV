@@ -7,7 +7,7 @@ const client = new Client();
 client.commands = new Collection();
 
 
-const log = require('./logger/logger');
+const log = require('./custom modules/logger/logger');
 global.logger = global.logger || new log();
 
 //checks folder EVENTS for javascript files
@@ -28,7 +28,7 @@ fs.readdir("./events/", (err, files) => {
 fs.readdir("./commands/", (err, files) => {
     let jsfile = files.filter(f => f.split(".").pop() === "js");
     if (jsfile.length <= 0) {
-        logger.critial("can't find commands!")
+        logger.critical("can't find commands!")
         return;
     }
     jsfile.forEach((f, i) => {
