@@ -171,6 +171,23 @@ class logger {
             console.log(`[START-UP|${time}] ${log}`.default)
         }
     }
+    reply(replyFile, GuildName, AuthorTag, wordFilter) {
+        let log = `${replyFile} issued in ${GuildName} by ${AuthorTag}`;
+        if(config.logging.reply) {
+            if(this.STF) {
+                SaveToFIle('reply', log)
+            }
+            if(this.STC) {
+                SaveToChannel(log)
+            }
+            if(!wordFilter === undefined) {
+                let log = `${replyFile} issued in ${GuildName} by ${AuthorTag} and said ${wordFilter}`;
+                console.log(`[REPLY|${time}] ${log}`)
+            } else {
+                console.log(`[REPLY|${time}] ${log}`)
+            }
+        }
+    }
 }
 
 module.exports = logger;
