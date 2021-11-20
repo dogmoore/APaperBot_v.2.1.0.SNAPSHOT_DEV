@@ -22,7 +22,7 @@ module.exports = {
         } catch (e) {
 
         }
-        let path = '../Bot_Logs'
+        let path = '../Bot_Logs/'
         if(message.author.id === perm.bypass.owner) {
             let command = args[0].toLowerCase();
             if(command === "delete") {
@@ -36,7 +36,7 @@ module.exports = {
                 if(subcommand2 === null) {
                     //code
                 } else {
-                    fs.writeFile(path +'/' + fileArgs[0]+'.txt', fileArgs[1].toString(), function (err) {
+                    fs.writeFile(path + fileArgs[0]+'.txt', fileArgs[1].toString(), function (err) {
                         if(err == null) {
                             logger.info('File created')
                         } else {
@@ -51,15 +51,6 @@ module.exports = {
                         file.forEach(file => {
                             message.channel.send(file)
                         })
-                    })
-                } else {
-                    let FileName = fileArgs[0]
-                    fs.readFile(path + '/' + FileName +'.txt', (err, data) => {
-                        if(err == null) {
-                            message.channel.send(data)
-                        } else {
-                            logger.error(err)
-                        }
                     })
                 }
             } else {

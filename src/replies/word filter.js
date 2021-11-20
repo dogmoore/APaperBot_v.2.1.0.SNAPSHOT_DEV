@@ -1,10 +1,13 @@
 const Discord = require('discord.js')
 const config = require('../secrets/config.json')
-const filter = require('../secrets/word-filter.json')
+const filter = require('../custom modules/filter/word-filter.json')
+const guilds = require('../custom modules/filter/guilds.json')
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max))
 }
+
+let OneOfFour = getRandomInt(4)
 
 /**
  *
@@ -14,49 +17,19 @@ function getRandomInt(max) {
 function filterMSG(message) {
     let wordFound = false
     let msg = message.content.toLowerCase()
-    let replyMSG = 10
-    let reply = '';
+    let specialReply = ["Please watch the mother fucking language", "Listen, kid, I know you think its funny or cool to swear, but it isn't", "...Please don't swear, I've asked this before...",
+        "Fuck you for using that kind of language", "Do you kiss your mother with that mouth"];
+    let GeneralReply = ["Please watch your language"];
 
     this.finish = () => {
         if(message.guild.id === "793674144910147616") {
-            switch(getRandomInt(replyMSG + 1)) {
-                case 0:
-                    reply = '';
-                    break;
-                case 1:
-                    reply = '';
-                    break;
-                case 2:
-                    reply = '';
-                    break;
-                case 3:
-                    reply = '';
-                    break;
-                case 4:
-                    reply = '';
-                    break;
-                case 5:
-                    reply = '';
-                    break;
-                case 6:
-                    reply = '';
-                    break;
-                case 7:
-                    reply = '';
-                    break;
-                case 8:
-                    reply = '';
-                    break;
-                case 9:
-                    reply = '';
-                    break;
-                case 10:
-                    reply = '';
-                    break;
-                default:
-                    reply = '';
-                    break;
+            if(OneOfFour === 2) {
+                message.channel.send(GeneralReply.at(getRandomInt(GeneralReply.length)))
+            } else {
+                message.channel.send(specialReply.at(getRandomInt(specialReply.length)))
             }
+        } else {
+            message.channel.send(GeneralReply.at(getRandomInt(GeneralReply.length)))
         }
         wordFound = true;
         logger.reply('Word Filter', message.guild.name, message.author.tag, msg)

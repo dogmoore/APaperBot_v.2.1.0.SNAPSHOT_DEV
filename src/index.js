@@ -7,7 +7,7 @@ const client = new Client();
 client.commands = new Collection();
 
 
-const log = require('./custom modules/logger/logger');
+const log = require('../../NivalisMC_discord/discord/src/custom modules/logger/logger');
 global.logger = global.logger || new log();
 
 //checks folder EVENTS for javascript files
